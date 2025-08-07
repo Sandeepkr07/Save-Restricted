@@ -1,4 +1,4 @@
-# Copyright (c) 2025 devgagan : https://github.com/devgaganin.  
+# Copyright (c) 2025 sandeep : https://github.com/sandeep07  
 # Licensed under the GNU General Public License v3.0.  
 # See LICENSE file in the repository root for full license text.
 
@@ -15,7 +15,7 @@ from plugins.batch import UB, UC
 from utils.custom_filters import login_in_progress, set_user_step, get_user_step
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-model = "v3saver Team SPY"
+model = ""+
 
 STEP_PHONE = 1
 STEP_CODE = 2
@@ -283,3 +283,4 @@ Still removing from database..."""
                 os.remove(f"{user_id}_client.session")
         except Exception:
             pass
+
