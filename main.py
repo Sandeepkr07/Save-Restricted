@@ -1,8 +1,11 @@
+# Copyright (c) 2025 Sandeep
+# Licensed under the GNU GPL v3.0
+
 import asyncio
+from shared_client import start_client
 import importlib
 import os
 import sys
-from shared_client import start_client
 
 async def load_and_run_plugins():
     await start_client()
@@ -34,6 +37,4 @@ if __name__ == "__main__":
         try:
             loop.close()
         except Exception:
-            pass1))
-
-
+            pass
