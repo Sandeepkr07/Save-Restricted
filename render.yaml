@@ -1,17 +1,9 @@
 services:
   - type: web
-    name: telegram-bot
+    name: pvt-saver-bot
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: python3 main.py
+    plan: free
     envVars:
-      - key: BOT_TOKEN
-        value: 6460951030:AAHqzZ6p-M1ukChvOpCmFZVavN4jxzQ5n20
-      - key: OWNER_ID
-        value: "6005294654"
-      - key: LOG_CHANNEL
-        value: "-1002344616377"
-      - key: FORCE_SUB
-        value: "-1002191173069"
-      - key: MONGO_DB
-        value: mongodb+srv://sandeepkrbth64:NbPbc81D9Z7CXhLj@sandeepkr.5zk8q.mongodb.net/?retryWrites=true&w=majority&appName=Sandeepkr
+      - fromDotEnv: true
