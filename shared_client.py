@@ -1,28 +1,40 @@
-# Copyright (c) 2025 devgagan : https://github.com/devgaganin.  
-# Licensed under the GNU General Public License v3.0.  
-# See LICENSE file in the repository root for full license text.
+import os
+from dotenv import load_dotenv
 
-from telethon import TelegramClient
-from config import API_ID, API_HASH, BOT_TOKEN, STRING
+load_dotenv()
+
+INST_COOKIES = """
+# put insta cookies here if needed
+"""
+
+YTUB_COOKIES = """
+# put yt cookies here if needed
+"""
+
+API_ID = "24558120"
+API_HASH = "85bd1a317c44733e6620ec82a7053fe9"
+BOT_TOKEN = "7264260495:AAHXaiFmOoJ0KnymkeqaDTy0UpsJw1HINY8"
+MONGO_DB = "mongodb+srv://sandeepkrbth64:NbPbc81D9Z7CXhLj@sandeepkr.5zk8q.mongodb.net/?retryWrites=true&w=majority&appName=Sandeepkr"
+OWNER_ID = [6005294654]
+DB_NAME = "telegram_downloader"
+STRING = None
+LOG_GROUP = -1002344616377
+FORCE_SUB = -1002191173069
+MASTER_KEY = "gK8HzLfT9QpViJcYeB5wRa3DmN7P2xUq"
+IV_KEY = "s7Yx5CpVmE3F"
+YT_COOKIES = YTUB_COOKIES
+INSTA_COOKIES = INST_COOKIES
+FREEMIUM_LIMIT = 0
+PREMIUM_LIMIT = 500
+JOIN_LINK = "https://t.me/team_spy_pro"
+ADMIN_CONTACT = "https://t.me/username_of_admin"
+
 from pyrogram import Client
-import sys
 
-client = TelegramClient("telethonbot", API_ID, API_HASH)
-app = Client("pyrogrambot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
-userbot = Client("4gbbot", api_id=API_ID, api_hash=API_HASH, session_string=STRING)
+app = Client("bot", api_id=int(API_ID), api_hash=API_HASH, bot_token=BOT_TOKEN)
 
 async def start_client():
-    if not client.is_connected():
-        await client.start(bot_token=BOT_TOKEN)
-        print("SpyLib started...")
-    if STRING:
-        try:
-            await userbot.start()
-            print("Userbot started...")
-        except Exception as e:
-            print(f"Hey honey!! check your premium string session, it may be invalid of expire {e}")
-            sys.exit(1)
     await app.start()
-    print("Pyro App Started...")
-    return client, app, userbot
+    print("Bot Started.")
+
 
