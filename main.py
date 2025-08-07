@@ -1,8 +1,8 @@
 import asyncio
-from shared_client import start_client
 import importlib
 import os
 import sys
+from shared_client import start_client
 
 async def load_and_run_plugins():
     await start_client()
@@ -11,10 +11,9 @@ async def load_and_run_plugins():
 
     for plugin in plugins:
         module = importlib.import_module(f"plugins.{plugin}")
-        func_name = f"run_{plugin}_plugin"
-        if hasattr(module, func_name):
+        if hasattr(module, f"run_{plugin}_plugin"):
             print(f"Running {plugin} plugin...")
-            await getattr(module, func_name)()
+            await getattr(module, f"run_{plugin}_plugin")()
 
 async def main():
     await load_and_run_plugins()
@@ -22,11 +21,19 @@ async def main():
         await asyncio.sleep(1)
 
 if __name__ == "__main__":
+    loop = asyncio.get_event_loop()
+    print("Starting clients ...")
     try:
-        asyncio.run(main())
+        loop.run_until_complete(main())
     except KeyboardInterrupt:
         print("Shutting down...")
     except Exception as e:
-        print(f"Error: {e}")
-        sys.exit(1))
+        print(e)
+        sys.exit(1)
+    finally:
+        try:
+            loop.close()
+        except Exception:
+            pass1))
+
 
